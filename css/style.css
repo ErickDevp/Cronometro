@@ -1,0 +1,49 @@
+@import url('https://fonts.cdnfonts.com/css/ds-digital');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(10, 10, 10);
+    color: #ffff;
+    font-family: 'DS-Digital', sans-serif;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
+.cronometro {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tempo {
+    font-size: 12rem;
+    cursor: pointer;
+}
+
+img {
+
+    cursor: pointer;
+}
+
+@media (max-width: 470px ) {
+    .tempo {
+        font-size: 10rem;
+    }
+}
+
+@media (max-width: 380px ) {
+    .tempo {
+        font-size: 8rem;
+    }
+}
