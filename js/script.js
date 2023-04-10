@@ -15,7 +15,6 @@ inciar()
 
 buttonPlay.addEventListener("click", () => {
     cronometro()
-    console.log("chamou o cronometro")
     pausarReturn()
     if(isPaused) {
         pausarCronometro()
@@ -29,7 +28,6 @@ buttonStop.addEventListener("click", () => {
 })
 
 buttonPausar.addEventListener("click", () => {
-    console.log("pausou o cronometro")
     pausarCronometro()
     playReturn()
 })
@@ -39,8 +37,8 @@ modTempo.addEventListener("click",modifTempo)
 function cronometro() {
 
     intervalId = setInterval(() => { 
-            
-        if( newMinutos === 0 && newSegundos === 0){
+
+        if( newMinutos == 0 && newSegundos == 0){
             clean()
             playReturn()
             return
@@ -51,7 +49,7 @@ function cronometro() {
         
         newSegundos--;
 
-        if (newSegundos < 0) {
+        if (newSegundos < 0 && newMinutos > 0) {
             newSegundos = 59;
             newMinutos--;
         }
@@ -68,17 +66,12 @@ function inciar() {
 }
 
 function pausarCronometro() {
-    console.log("function de pausa do cronometro")
     if (!isPaused) {
-        console.log("cronometro esta pausado")
-
         clearInterval(intervalId);
         antSegundos = newSegundos
         antMinutos = newMinutos
         isPaused = true;
     } else {
-        console.log("cronometro não esta mais pausado ")
-
         isPaused = false;
         newSegundos = antSegundos
         newMinutos = antMinutos
@@ -105,20 +98,29 @@ function clean() {
 }
 
 function modifTempo() {
+    
+    newMinutos = Number(prompt("Minutos"))
+    newSegundos = Number(prompt("Segundo"))
 
-    newMinutos = prompt("Minutos")
-    newSegundos = prompt("Segundo")
     if (newSegundos > 59) {
         let excessoSegundos = newSegundos - 59
         newSegundos = newSegundos - excessoSegundos
     }
-
-    if(!newMinutos && !newSegundos){
-        newMinutos = 0
-        newSegundos = 0
+    
+    if (!newMinutos && !newSegundos || isNaN(newMinutos) || isNaN(newSegundos)){
+        newMinutos = 00
+        newSegundos = 00
+        alert("[ERROR] - Apenas numeros")
     } 
 
-    minutos.innerText = newMinutos.toString().padStart(2, "0");
-    segundos.innerText = newSegundos.toString().padStart(2, "0");2
+    if (typeof newMinutos === 'number' && typeof newSegundos === 'number'){
+        newMinutos = newMinutos.toString()
+        newSegundos = newSegundos.toString()
+    
+        minutos.innerText = newMinutos.toString().padStart(2, "0");
+        segundos.innerText = newSegundos.toString().padStart(2, "0");
+    }
+
+
 }
 

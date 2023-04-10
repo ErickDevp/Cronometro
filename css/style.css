@@ -38,12 +38,12 @@ img {
 
 @media (max-width: 470px ) {
     .tempo {
-        font-size: 10rem;
+        font-size: 9rem;
     }
 }
 
 @media (max-width: 380px ) {
     .tempo {
-        font-size: 8rem;
+        font-size: 6rem;
     }
 }
