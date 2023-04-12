@@ -90,33 +90,29 @@ function playReturn() {
 }
 
 function clean() {
+    clearInterval(intervalId);
     newMinutos = 00
     newSegundos = 00
     minutos.innerText = newMinutos.toString().padStart(2, "0");
     segundos.innerText = newSegundos.toString().padStart(2, "0");
-    clearInterval(intervalId);
+
 }
 
 function modifTempo() {
-    
-    newMinutos = Number(prompt("Minutos"))
-    newSegundos = Number(prompt("Segundo"))
+
+    newMinutos = prompt("Minutos")
+    newSegundos = prompt("Segundo")
 
     if (newSegundos > 59) {
         let excessoSegundos = newSegundos - 59
         newSegundos = newSegundos - excessoSegundos
     }
     
-    if (!newMinutos && !newSegundos || isNaN(newMinutos) || isNaN(newSegundos)){
+    if (!newMinutos || !newSegundos || isNaN(newMinutos) || isNaN(newSegundos)){
         newMinutos = 00
         newSegundos = 00
         alert("[ERROR] - Apenas numeros")
-    } 
-
-    if (typeof newMinutos === 'number' && typeof newSegundos === 'number'){
-        newMinutos = newMinutos.toString()
-        newSegundos = newSegundos.toString()
-    
+    } else {
         minutos.innerText = newMinutos.toString().padStart(2, "0");
         segundos.innerText = newSegundos.toString().padStart(2, "0");
     }
